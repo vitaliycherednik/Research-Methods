@@ -1,4 +1,7 @@
 import random
+import time
+
+start_time = time.clock()
 
 a0 = random.randint(1, 20)
 a1 = random.randint(1, 20)
@@ -54,3 +57,5 @@ print("xn2 =", xn2)
 print("xn3 =", xn3, "\n")
 print("Еталонне значення Y:", Yet)
 print("max((Y - Yet)^2) =", max_value)
+
+print("Час виконання програми:" , (time.clock() - start_time), "seconds")
