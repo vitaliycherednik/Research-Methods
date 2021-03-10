@@ -1,6 +1,7 @@
 import random
 import numpy as np
 import math
+import time
 
 var = 226
 m = 5
@@ -58,10 +59,12 @@ print("Експериментальні значення критерію Ром
 for i in range(3):
     print(ruv[i])
 
+start_time = time.perf_counter()
 r_kr = 2
 for i in range(len(ruv)):
     if ruv[i] > r_kr:
         print("Неоднорідна дисперсія")
+print("Час виконання перевірки однорідності:" , (time.perf_counter() - start_time), "seconds")
 
 mx1 = (xn[0][0] + xn[1][0] + xn[2][0]) / 3
 mx2 = (xn[0][1] + xn[1][1] + xn[2][1]) / 3
