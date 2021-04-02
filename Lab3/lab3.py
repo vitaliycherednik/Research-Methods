@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from numpy.linalg import solve
+from scipy.stats import t
 
 x1min = 10
 x1max = 60
@@ -101,15 +102,17 @@ res = [0] * 4
 Tf = 2.306
 coefs1 = []
 coefs2 = []
+m = 3
+n = 4
+f3 = (m-1)*n
 for i in range(4):
-    if T[i] <= Tf:
+    if T[i] <= t.ppf(q=0.975, df=f3):
         coefs2.append(B[i])
         res[i] = 0
     else:
         coefs1.append(B[i])
         res[i] = B[i]
         d += 1
-print("Значущі коефіцієнти регресії:", coefs1)
 print("Незначущі коефіцієнти регресії:", coefs2)
 
 y_st = []
@@ -126,3 +129,4 @@ if (Fp < Ft):
     print("Рівняння регресії адекватне при рівні значимості 0.05")
 else:
     print("Рівняння регресії неадекватне при рівні значимості 0.05")
+print("Значущі коефіцієнти регресії:", coefs1)
