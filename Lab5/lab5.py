@@ -112,6 +112,7 @@ t_list = [abs(b[i]) / sbs for i in range(0, 11)]
 
 d = 0
 res = [0] * 11
+res2 = [0] * 11
 coefs1 = []
 coefs2 = []
 n = 15
@@ -120,12 +121,17 @@ for i in range(11):
     if t_list[i] < t.ppf(q=0.975, df=F3):
         coefs2.append(b[i])
         res[i] = 0
+        res2[i] = b[i]
     else:
         coefs1.append(b[i])
         res[i] = b[i]
+        res2[i] = 0
         d += 1
 print("Значущі коефіцієнти регресії:", coefs1)
 print("Незначущі коефіцієнти регресії:", coefs2)
+
+print("Рівняння регресії з незначущими коефіцієнтами: \n" "y = {} + {}*x1 + {}*x2 + {}*x3 + {}*x1x2 + {}*x1x3 + {"
+      "}*x2x3 + {}*x1x2x3 {}*x1^2 + {}*x2^2 + {}*x3^2".format(res2[0], res2[1], res2[2], res2[3], res2[4], res2[5], res2[6], res2[7], res2[8], res2[9], res2[10]))
 
 y_st = []
 for i in range(15):
